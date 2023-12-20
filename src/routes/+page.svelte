@@ -1,6 +1,6 @@
 <script lang="ts">
     import LayoutTemplate from "$components/LayoutTemplate.svelte"
-    import {goto} from "$app/navigation";
+    import {goto} from "$app/navigation"
 </script>
 
 <LayoutTemplate name="Home">
