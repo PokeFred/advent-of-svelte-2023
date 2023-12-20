@@ -5,19 +5,29 @@ interface Child {
     tally: number
 }
 
-function sortList(list: Child[]): Child[] {
+// original solution
+// sorting algorithm 1
+function sortList_1(list: Child[]): Child[] {
     for (let i = 0; i < (list.length - 1); i++) {
         for (let j = 0; j < (list.length - 1); j++) {
-            /* original solution */
-            //const element_1: Child = list[j]
-            //const element_2: Child = list[j + 1]
+            const element_1: Child = list[j]
+            const element_2: Child = list[j + 1]
 
-            //let swap: boolean = element_1.tally < element_2.tally
+            let swap: boolean = element_1.tally < element_2.tally
 
-            //list[j] = swap ? element_2 : element_1
-            //list[j + 1] = swap ? element_1 : element_2
+            list[j] = swap ? element_2 : element_1
+            list[j + 1] = swap ? element_1 : element_2
+        }
+    }
 
-            /* new solution */
+    return list
+}
+
+// new solution
+// sorting algorithm 2
+function sortList_2(list: Child[]): Child[] {
+    for (let i = 0; i < (list.length - 1); i++) {
+        for (let j = 0; j < (list.length - 1); j++) {
             if (list[j].tally < list[j + 1].tally) {
                 const temp: Child = list[j]
 
@@ -40,7 +50,7 @@ export const load: PageServerLoad = ({fetch}) => {
                 const data: Child[] = await response.json()
 
                 if (response.status === 200) {
-                    resolve(sortList(data))
+                    resolve(sortList_2(data))
                 } else {
                     reject("internal error.")
                 }
