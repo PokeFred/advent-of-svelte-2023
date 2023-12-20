@@ -3,6 +3,7 @@
 </svelte:head>
 
 <script lang="ts">
+    import {page} from "$app/stores"
     import {goto} from "$app/navigation"
     import Icon from "svelte-awesome"
     import {faHouse} from "@fortawesome/free-solid-svg-icons/faHouse"
@@ -11,7 +12,7 @@
 </script>
 
 <div class="w-full h-12 text-3xl text-white bg-gray-800 border border-gray-700 rounded-t-xl shrink-0 relative">
-    {#if window.location.pathname !== "/"}
+    {#if $page.url.pathname !== "/"}
         <button on:click={() => goto("/")} class="top-0 left-0 w-12 h-12 flex justify-center items-center cursor-pointer absolute p-2 hover:opacity-75">
             <Icon data={faHouse} class="w-6 h-6" />
         </button>
