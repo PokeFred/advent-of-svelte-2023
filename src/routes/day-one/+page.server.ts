@@ -8,8 +8,8 @@ interface Child {
 // original solution
 // sorting algorithm 1
 function sortList_1(list: Child[]): Child[] {
-    for (let i = 0; i < (list.length - 1); i++) {
-        for (let j = 0; j < (list.length - 1); j++) {
+    for (let i: number = 0; i < (list.length - 1); i++) {
+        for (let j: number = 0; j < (list.length - 1); j++) {
             const element_1: Child = list[j]
             const element_2: Child = list[j + 1]
 
@@ -26,8 +26,8 @@ function sortList_1(list: Child[]): Child[] {
 // new solution
 // sorting algorithm 2
 function sortList_2(list: Child[]): Child[] {
-    for (let i = 0; i < (list.length - 1); i++) {
-        for (let j = 0; j < (list.length - 1); j++) {
+    for (let i: number = 0; i < (list.length - 1); i++) {
+        for (let j: number = 0; j < (list.length - 1); j++) {
             if (list[j].tally < list[j + 1].tally) {
                 const temp: Child = list[j]
 
@@ -40,7 +40,7 @@ function sortList_2(list: Child[]): Child[] {
     return list
 }
 
-export const load: PageServerLoad = ({fetch}) => {
+export const load: PageServerLoad = ({fetch}): any => {
     return {
         data: new Promise(async (resolve: (value: Child[]) => void, reject: (reason?: any) => void): Promise<void> => {
             try {
